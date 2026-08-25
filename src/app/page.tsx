@@ -1,3 +1,6 @@
+import { PROJECTS } from "@/data/projects";
+import { ProjectCard } from "@/components/ProjectCard";
+
 const NAV_LINKS = [
   { href: "#work", label: "Work" },
   { href: "#about-full", label: "About" },
@@ -186,47 +189,10 @@ export default function Home() {
       {/* Selected Work */}
       <section id="work" className="mx-auto max-w-6xl px-6 pb-24 md:px-16">
         <Eyebrow>Selected Work</Eyebrow>
-        <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div className="rounded-lg bg-tertiary p-8 text-surface">
-            <h3 className="font-display text-2xl font-semibold">
-              Coin &amp; Cloth
-            </h3>
-            <p className={`${label} mt-1 text-surface/80`}>
-              Clothing &amp; Accessories Store — UI/UX Case Study
-            </p>
-            <p className="mt-4 leading-relaxed text-surface/90">
-              A full UI/UX design for an e-commerce concept selling clothing
-              and accessories — product browsing, cart, and checkout flows
-              designed end-to-end in Figma.
-            </p>
-            <div className="mt-6 grid grid-cols-2 gap-4 border-t border-surface/20 pt-6">
-              <div>
-                <span className={`${label} text-surface/70`}>Role</span>
-                <p className="mt-1">UI/UX Design</p>
-              </div>
-              <div>
-                <span className={`${label} text-surface/70`}>Tool</span>
-                <p className="mt-1">Figma</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="rounded-lg border border-border bg-surface p-6">
-            <div className="flex items-center gap-1.5">
-              <span className="h-2.5 w-2.5 rounded-full bg-subtle" />
-              <span className="h-2.5 w-2.5 rounded-full bg-subtle" />
-              <span className="h-2.5 w-2.5 rounded-full bg-subtle" />
-            </div>
-            <div className="mt-4 grid grid-cols-3 gap-3">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <div key={i} className="rounded-md bg-subtle p-3">
-                  <div className="aspect-square rounded-sm bg-surface" />
-                  <div className="mt-2 h-2 w-3/4 rounded-full bg-surface" />
-                  <div className="mt-1 h-2 w-1/2 rounded-full bg-surface/60" />
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="mt-6 flex flex-col gap-6">
+          {PROJECTS.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
+          ))}
         </div>
       </section>
 

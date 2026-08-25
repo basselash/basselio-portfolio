@@ -225,6 +225,10 @@ Radius is hierarchical: bento cards use 24px, buttons and inputs use 12px, and t
 
 **Featured/accent card (`card-featured`).** The only place `tertiary` appears. Flat fill, no gradient — the source uses a solid coral rectangle, not a gradient. Reserved for exactly one card at a time.
 
+**Project cards are the one deliberate exception to this token system.** Selected Work renders each project through its own `theme` (background/surface/text/textMuted/accent/fontDisplay, defined per-project in `src/data/projects.ts`) rather than the portfolio's `primary`/`neutral`/`surface` tokens — a case-study card is supposed to look like the project it represents, not like a reskinned version of the portfolio chrome. Everything *around* the card — the section grid, the `Eyebrow` label, spacing, the hover-lift interaction — stays on the portfolio's own system. Only the inside of the card (its colors, its title typeface) belongs to the project.
+
+**Project video (`ProjectVideo`).** Muted, looped, `playsInline`, paused via `IntersectionObserver` when scrolled out of view. Falls back to a themed placeholder panel (using the project's own `surface`/`accent`) rather than a broken `<video>` or an invented screenshot when no real recording exists yet at the declared path.
+
 **Eyebrow labels (`eyebrow`).** A small outlined pill introducing a section. In a light section: `surface` fill, `on-surface` text, `border` stroke. Inside `section-dark`: transparent fill, `surface` text and border.
 
 **Dark sections (`section-dark`) and dark cards (`card-dark`).** Both use the `on-surface`/`surface` pairing at section scale — pure black background, white text. Cards inside a dark section are separated from the section background by a 1px `surface`-at-10%-opacity border only; there is no second dark fill value.
@@ -241,3 +245,5 @@ Radius is hierarchical: bento cards use 24px, buttons and inputs use 12px, and t
 - **Don't** center the hero or bio text. The layout is asymmetric and flush-left by default.
 - **Do** alternate light and dark strictly section-by-section. Two dark sections in a row breaks the pacing rhythm.
 - **Don't** invent a second dark background value. `card-dark` and `section-dark` share the exact same `on-surface` fill; separation comes from a `surface`-at-10% border only.
+- **Do** give each project its own `theme` in `src/data/projects.ts` — colors and a title typeface distinct to that project's actual visual identity. A project card that just reuses `primary`/`surface` is a reskinned template, not a case-study preview.
+- **Don't** let a project's own theme leak outside its card. The section label, grid, spacing, and hover behavior stay on the portfolio's system regardless of how loud or quiet an individual project's palette is.
