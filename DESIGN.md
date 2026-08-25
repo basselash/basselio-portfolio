@@ -1,65 +1,58 @@
 ---
 version: alpha
-name: Sunbaked Bento
-description: Personal portfolio for Bassel Ashraf Ali Azab — UI/UX designer and front-end developer. A modular bento-grid layout for a design-literate audience (recruiters, studios, hiring managers) skimming a portfolio in under a minute.
+name: Sleek Portfolio
+description: Personal portfolio for Bassel Ashraf Ali Azab — UI/UX designer and front-end developer. Colors and type are matched directly to a reference designer-portfolio template rather than reinterpreted.
 
 colors:
-  primary: "#9C3417"
-  secondary: "#6B655B"
-  tertiary: "#5B5EC4"
-  neutral: "#F2EEE7"
-  surface: "#FDFCFB"
-  on-surface: "#1B1712"
-  subtle: "#F6D9C9"
-  border: "#E4DED2"
-  error: "#B23B26"
+  primary: "#363636"
+  secondary: "#5C5C5C"
+  tertiary: "#FD7250"
+  neutral: "#F4F4F4"
+  surface: "#FFFFFF"
+  on-surface: "#000000"
+  subtle: "#EDEDED"
+  border: "#E0E0E0"
+  error: "#C23B2E"
 
 typography:
   display:
-    fontFamily: Space Grotesk
+    fontFamily: Wix Madefor Display
     fontSize: 56px
-    fontWeight: 600
+    fontWeight: 700
     lineHeight: 1.05
-    letterSpacing: -0.03em
-  headline-lg:
-    fontFamily: Space Grotesk
-    fontSize: 32px
-    fontWeight: 600
-    lineHeight: 1.15
     letterSpacing: -0.02em
-  headline-sm:
-    fontFamily: Space Grotesk
-    fontSize: 22px
-    fontWeight: 500
-    lineHeight: 1.25
+  headline-lg:
+    fontFamily: Wix Madefor Display
+    fontSize: 32px
+    fontWeight: 700
+    lineHeight: 1.15
     letterSpacing: -0.01em
+  headline-sm:
+    fontFamily: Wix Madefor Display
+    fontSize: 22px
+    fontWeight: 700
+    lineHeight: 1.25
   body-lg:
-    fontFamily: Work Sans
+    fontFamily: Wix Madefor Text
     fontSize: 18px
     fontWeight: 400
     lineHeight: 1.6
   body-md:
-    fontFamily: Work Sans
+    fontFamily: Wix Madefor Text
     fontSize: 16px
     fontWeight: 400
     lineHeight: 1.6
   body-sm:
-    fontFamily: Work Sans
+    fontFamily: Wix Madefor Text
     fontSize: 14px
     fontWeight: 400
     lineHeight: 1.5
   label-caps:
-    fontFamily: Work Sans
+    fontFamily: Wix Madefor Text
     fontSize: 11px
     fontWeight: 500
     lineHeight: 1.3
     letterSpacing: 0.1em
-  data-sm:
-    fontFamily: JetBrains Mono
-    fontSize: 12px
-    fontWeight: 400
-    lineHeight: 1.4
-    letterSpacing: 0.02em
 
 rounded:
   none: 0px
@@ -103,11 +96,11 @@ components:
     rounded: "{rounded.md}"
     padding: "{spacing.md}"
   button-primary-hover:
-    backgroundColor: "#7A2812"
+    backgroundColor: "#1F1F1F"
     textColor: "{colors.surface}"
   button-secondary:
     backgroundColor: "{colors.surface}"
-    textColor: "{colors.primary}"
+    textColor: "{colors.on-surface}"
     typography: "{typography.label-caps}"
     rounded: "{rounded.md}"
     padding: "{spacing.md}"
@@ -122,9 +115,9 @@ components:
     rounded: "{rounded.lg}"
     padding: "{spacing.lg}"
   tag-chip:
-    backgroundColor: "{colors.subtle}"
-    textColor: "{colors.primary}"
-    typography: "{typography.data-sm}"
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.on-surface}"
+    typography: "{typography.body-sm}"
     rounded: "{rounded.full}"
     padding: "{spacing.xs}"
   divider:
@@ -161,95 +154,90 @@ components:
     textColor: "{colors.surface}"
     rounded: "{rounded.lg}"
     padding: "{spacing.lg}"
+  subtle-panel:
+    backgroundColor: "{colors.subtle}"
+    textColor: "{colors.on-surface}"
+    rounded: "{rounded.md}"
+    padding: "{spacing.sm}"
 ---
 
-# Sunbaked Bento
+# Sleek Portfolio
 
 ## Overview
 
-This is a portfolio read once, fast, by someone deciding whether to keep looking — a recruiter or hiring designer scanning on a laptop for twenty seconds before they either scroll or leave. It has to communicate "this person can design *and* build" in that window, which is why it borrows the **bento grid**: a modular field of unevenly-sized cards (intro, skills, the one flagship project, contact) that lets the eye sample the whole page without reading top-to-bottom first.
+This system is deliberately **not** authored from scratch — it's a direct match to a reference designer-portfolio template the client picked out and asked to replicate exactly: same colors, same fonts, same visual logic. That's a different job from the usual DESIGN.md brief. Normally a palette gets re-anchored to something specific to the person it represents; here the correct move is fidelity to the source, verified against its actual computed styles (not eyeballed from a screenshot), because the client's ask was literal.
 
-The page alternates **light and dark registers** section by section: light for the hero and the work sample (fast, scannable, credential-forward), dark for "What I Do" and the fuller "About" (slower, asks for a moment of actual reading). The alternation is the pacing device — it tells a skimming reader when to speed up and when the page wants them to slow down, without needing a scroll-triggered animation to do it. Dark sections reuse existing tokens rather than introducing a separate dark palette: `on-surface` becomes the section background and `surface` becomes the text, the same pairing `tooltip` already uses at component scale, just applied to a whole section.
-
-The direction is **Bento Studio**, adapted from a genre of designer-portfolio template (light, card-based, one confident accent) rather than invented from nothing — but the palette is not borrowed. It's re-anchored to something specific to the person it represents: Cairo sandstone and a Nile dusk, standing in for someone building his design career from Nile University. That's the difference between reusing a layout idea and reusing a look.
-
-What this direction gives up, deliberately: **restraint**. A bento grid with a loud terracotta accent is not a quiet, minimal system — it is closer to a confident, slightly maximalist one. That's the trade being made in exchange for a page that reads instantly as "portfolio," not "resume."
+The register is **stark, high-contrast, editorial-adjacent**: near-white page, pure-white cards, black type, and a bento grid of unevenly-sized tiles, alternating with pure-black full-bleed sections for the slower "What I Do" and "About" reads. What this direction gives up: warmth. There are no tinted neutrals here — the source uses true white, true black, and a flat mid-grey, and this system matches that rather than softening it.
 
 ## Colors
 
-The palette is sampled from two things: fired terracotta (the primary) and the Nile at dusk (the one cool accent). Nothing here is a framework default — every neutral carries a warm tint, and there is no pure white or pure black anywhere in the system. Primary and tertiary both sit deeper in their ramps than the initial pass used, specifically so text set in them clears WCAG AA (4.5:1) against every background they appear on — a portfolio that fails contrast checks undercuts the "I design accessible UI" pitch it's implicitly making.
+Every value here was read directly from the reference site's computed CSS (`getComputedStyle`), not estimated from screenshots. Two findings changed the system from an earlier draft: the primary interactive color is a **dark charcoal**, not the coral accent — buttons and links use `#363636`/`#000000`, and coral appears exactly once, as a single accent card's background. Getting that backwards (making coral the "clickable" color) would have been a plausible-looking but factually wrong read of the source.
 
-- **Primary (#9C3417) — "Fired terracotta":** kiln-fired clay rather than raw sandstone — darker and more saturated than a literal desert sample, because it has to double as text and button color at AA contrast. Carries every interactive element — links, primary buttons, the active nav state, chip text. It is the only color allowed to signal "click me."
-- **Secondary (#6B655B) — "Limestone dust":** a warm neutral grey for anything that should recede — nav labels, captions, metadata. Never used for anything interactive.
-- **Tertiary (#5B5EC4) — "Nile dusk":** the single cool color in the system, reserved for exactly one surface: the featured-project card background. It is what makes that one card read as *the* thing to look at on a page otherwise built from warm tones. If a second element starts using it, the signal is gone — treat that as a bug, not a style choice.
-- **Neutral (#F2EEE7) — "Desert paper":** the page background. A half-step warmer and darker than Surface, so cards visibly sit *on* the page rather than blend into it.
-- **Surface (#FDFCFB) — "Bone white":** card and elevated-surface fill. Never pure `#FFFFFF` — it carries the same warm bias as every other neutral in the system.
-- **On-surface (#1B1712) — "Ink basalt":** body text and headings. A warm near-black, not a true black, so long stretches of body copy don't read as harshly as pure `#000`.
-- **Subtle (#F6D9C9) — "Terracotta wash":** a pale tint off the primary ramp, used only as the fill behind skill/tech tags.
-- **Border (#E4DED2):** hairline dividers between sections and under the nav.
-- **Error (#B23B26):** pulled from the same ramp as primary, one step darker and more saturated — a form error looks like it belongs to this palette, not like a bootstrap red dropped in from elsewhere.
+- **Primary (#363636):** the measured fill of the source's primary buttons and links on light backgrounds. Carries every interactive element outside the dark sections.
+- **Secondary (#5C5C5C):** the measured color of muted/caption text. Used for anything that should recede.
+- **Tertiary (#FD7250):** the coral accent, measured from the one card in the source that uses it as a background. Reserved for exactly one surface at a time — it does not appear as a text color, a border, or anywhere else.
+- **Neutral (#F4F4F4):** the measured page background — a flat light grey, not warm-tinted.
+- **Surface (#FFFFFF):** the measured card background — true white, matching the source exactly.
+- **On-surface (#000000):** the measured body/heading text color, and also the dark-section background. True black, not a softened near-black.
+- **Subtle (#EDEDED):** a light grey a half-step off Neutral, used for secondary panel fills (e.g. placeholder preview blocks) where a second flat tone is needed.
+- **Border (#E0E0E0):** hairlines and outline-chip strokes.
+- **Error (#C23B2E):** not present in the source (a portfolio has no form states to sample); derived from the coral family so a validation error still reads as belonging to this palette rather than an imported stock red, and darkened until it clears AA on white.
+
+**Known accessibility gap, kept intentionally for source fidelity:** white text on `tertiary` (`#FD7250`) measures **2.73:1**, below WCAG AA (4.5:1) for text of any size. The source template ships this exact combination. It's used here only on the one accent card, at display scale, matching the source — not extended anywhere else. If this system is ever asked to meet AA strictly, this is the one color pairing that needs a client decision (darken the coral, or switch that card's text to `on-surface`).
 
 ## Typography
 
-Two families plus a monospace for texture, not three competing voices.
+Two families, matching the source exactly rather than reinterpreted: **Wix Madefor Display** for headings and **Wix Madefor Text** for everything else. Both are real, freely licensed (SIL OFL) and available directly through Google Fonts — this is a case where the "authored, not default" instinct doesn't apply, because matching the specific pair the source uses *is* the brief.
 
-**Space Grotesk** carries the display type — the name, section headers, the "Crafting interfaces that…" hero line. It's a geometric grotesk with just enough personality in its lowercase (the squared, slightly mechanical `g` and `a`) to read as confident rather than corporate, without tipping into novelty. Fallback stack: `"Space Grotesk", "Sora", ui-sans-serif, sans-serif`. Open-source (OFL), served via Google Fonts.
+**Wix Madefor Display**, bold (700), carries the hero line, section headings, and card titles. Fallback stack: `"Wix Madefor Display", ui-sans-serif, sans-serif`.
 
-**Work Sans** carries body copy, nav labels, and captions. It's a humanist grotesk — rounder, warmer terminals than Space Grotesk — chosen specifically so the two faces don't collapse into "one geometric sans at two sizes." Its job is to disappear behind the content. Fallback stack: `"Work Sans", ui-sans-serif, sans-serif`. Open-source (OFL), served via Google Fonts.
+**Wix Madefor Text** carries body copy, labels, nav, and buttons at two weights — 400 for reading text, 500 for uppercase `label-caps`. Fallback stack: `"Wix Madefor Text", ui-sans-serif, sans-serif`.
 
-**JetBrains Mono** appears in exactly one place: the tech-stack chips on the project card ("React", "Figma", "TypeScript"). A monospace label on an otherwise all-sans page is a small, deliberate signal that this designer also writes code — it should not spread beyond that one component.
+No monospace typeface is used anywhere. The source has none, so an earlier draft's JetBrains Mono accent for tech-stack chips has been removed — those chips now use `body-sm` like everything else.
 
-The scale runs 11px → 56px, hand-broken at the top (56px display, not a mechanically-generated next step) so the hero line has real weight against the grid below it. Tracking tightens at display size (−0.03em) and opens up on uppercase labels (+0.1em). Only two weights are used across both sans faces — 400 and 600 — plus one 500 for headline-sm; no third weight is introduced anywhere else.
+The scale runs 11px → 56px. Tracking tightens slightly at display size (−0.02em) and opens up on uppercase labels (+0.1em). Only two weights are used total — 400 and 500 for Text, 700 for Display — kept deliberately far apart so the jump reads as a real hierarchy signal.
 
 ## Layout
 
-A **12-column bento grid**, 24px gutters, 64px outer margin on desktop, collapsing to a single stacked column below 768px. Cards span uneven widths and heights (1×1 identity card, 2×1 bio card, 2×2 featured project, 1×2 contact rail) rather than a uniform grid of equal tiles — a bento layout where every card is the same size defeats the point of the genre.
+A **12-column bento grid**, 24px gutters, 64px outer margin on desktop, collapsing to a single stacked column below 768px. Cards span uneven widths and heights rather than a uniform grid of equal tiles.
 
-Spacing runs on an **8px base**, with a 4px half-step reserved for chip padding only. Body copy (the bio paragraph) is capped at roughly **65 characters** per line even though it sits in a wide card — width and readable measure are treated as separate constraints.
+Full page order: **Hero** (bento grid) → **Selected Work** (one case-study block, light) → **What I Do** (dark, four practice-area cards in a 2×2 grid) → **About** (dark, longer-form bio) → **CTA** (light, one line + one action) → **Footer** (light, three columns). Dark sections reuse `on-surface`/`surface` as background/text rather than introducing a separate dark palette.
 
-The page is intentionally **asymmetric**: the hero card is left-weighted, the featured-project card is oversized relative to everything around it, and nothing on the page is centered except short standalone labels.
+Spacing runs on an **8px base**. Body copy is capped at roughly 65 characters per line even inside a wide card.
 
-Full page order: **Hero** (bento grid) → **Selected Work** (one case-study block, light) → **What I Do** (dark, four practice-area cards in a 2×2 grid) → **About** (dark, a longer-form bio) → **CTA** (light, one line + one action) → **Footer** (light, three columns). Each dark section opens with an `eyebrow` label ("WHAT I DO", "ABOUT") in the outlined-pill style, signaling a section break without a heavy divider.
+The page is intentionally **asymmetric** — cards are left-weighted and unevenly sized, and nothing is centered except short standalone labels and the CTA line.
 
 ## Elevation & Depth
 
-Depth comes primarily from the **tonal step between Neutral (page) and Surface (cards)** — a half-step in lightness, both warm, so a card reads as "a different paper stock" rather than "an object floating above the page." A 1px `border` hairline reinforces card edges where the tonal contrast alone is too subtle (e.g. two adjacent cards of similar size).
-
-Shadow is used sparingly and only on **hover/interactive states** — a soft, warm-tinted shadow (never neutral black), offset downward as if lit from above, appearing only when a card or button is actively engaged. At rest, nothing in the system casts a shadow.
+Depth comes from the **tonal step between Neutral (page) and Surface (cards)** plus a 1px `border` hairline where that tonal contrast alone is too subtle. Shadow is used sparingly and only on hover/interactive states — flat black at low opacity is acceptable here (unlike a warm-toned system, this palette has no hue to tint a shadow with). At rest, nothing casts a shadow.
 
 ## Shapes
 
-Radius is hierarchical, tied to a card's size and importance: bento cards use **24px** (large, confident, matches their scale), buttons and inputs use **12px**, and tag chips use **full pill (9999px)** — the pill shape is reserved exclusively for chips so it reads as its own category of element, not a smaller version of a card. Nothing in the system uses a radius between 12px and 24px; that gap is deliberate.
+Radius is hierarchical: bento cards use 24px, buttons and inputs use 12px, and tag chips use full pill (9999px) with an outline rather than a fill. Nothing uses a radius between 12px and 24px.
 
 ## Components
 
-**Buttons.** Primary is a solid `primary` fill with `surface` text, `label-caps` type, uppercase and tracked. Hover darkens to `#7A2812` — no scale, no shadow lift on the button itself. Secondary is `surface` fill with `primary` text and a 1px `border` rule (specified here, not as a token) — used for anything that isn't the page's single main call-to-action (e.g. "View Resume" next to "View Project").
+**Buttons.** Primary is a solid `primary` (#363636) fill with `surface` (white) text, uppercase `label-caps`. Hover darkens to `#1F1F1F`. Secondary is `surface` fill with `on-surface` text and a 1px `border` rule — used for anything that isn't the page's single main call-to-action. Inside a `section-dark`, the equivalent button is outline-only: transparent fill, `surface`-colored border and text, matching the source's "Learn More" treatment.
 
-**Bento cards.** `surface` fill, 24px radius, 32px padding. One card per discrete idea — identity, bio, one skill cluster, one project. Never stack unrelated content inside a single card to save space; add a card instead.
+**Bento cards.** `surface` fill, 24px radius, 32px padding, 1px `border`. One card per discrete idea.
 
-**Featured project card (`card-featured`).** The only place `tertiary` appears. Implemented in code as a gradient from `{colors.tertiary}` toward a lighter tint of itself (not a second hue) — the token carries the base color; the gradient softening is a CSS-level detail, not a second token. Reserved for the Coin & Cloth case study, and for exactly one project at a time even if more are added later — a bento grid with two "loud" cards has no focal point.
+**Tag chips (`tag-chip`).** Outline pills, not filled — `surface` background, `on-surface` text, a 1px `border` stroke, full radius. This matches the source's "Interaction Design"-style expertise chips exactly, which are unfilled outlines rather than colored pills.
 
-**Tag chips.** `subtle` fill, `primary` text, full pill, `data-sm` (monospace) type. Used only for skills/tools ("Figma", "React", "Python") — never as a generic label elsewhere on the page.
+**Featured/accent card (`card-featured`).** The only place `tertiary` appears. Flat fill, no gradient — the source uses a solid coral rectangle, not a gradient. Reserved for exactly one card at a time.
 
-**Nav.** A `nav-badge` pill (name + role) sits top-left; plain-text nav links sit top-right in `label-caps`, `secondary` at rest and `primary` when active — no underline animation beyond a color change, kept quiet since the page's loudness budget is already spent on the bento cards.
+**Eyebrow labels (`eyebrow`).** A small outlined pill introducing a section. In a light section: `surface` fill, `on-surface` text, `border` stroke. Inside `section-dark`: transparent fill, `surface` text and border.
 
-**Eyebrow labels (`eyebrow`).** A small outlined pill introducing a section ("SELECTED WORK", "WHAT I DO", "ABOUT"). In a light section it renders as the `eyebrow` token pair (`surface` fill, `on-surface` text) with a `border` rule; inside a `section-dark`, the same component is re-skinned as transparent with a `surface`-colored 1px border and `surface` text — a border-only pill reads correctly against either background without needing a second token pair, since it never relies on its own fill for contrast.
-
-**Dark sections (`section-dark`) and dark cards (`card-dark`).** Both reuse the `on-surface`/`surface` pairing already established by `tooltip`, just at section scale. Cards inside a dark section are distinguished from the section background by a 1px `surface`-at-10%-opacity border only — there is no separate "dark card fill," because introducing one would mean the system needs a second near-black value, and it doesn't.
-
-**Selected Work.** One case-study block per project, light section: a text card (title, one-line role, short description, year) beside a larger preview panel. The preview is built from the palette's own tones (surface panels, primary/tertiary accents) rather than a literal screenshot when no real product shot exists yet — an honest placeholder in-system beats a borrowed stock image.
-
-**What I Do.** Exactly four `card-dark` tiles in a 2×2 grid, each a number (`01`–`04`), a short title, and one sentence. Four is the limit — a fifth practice area belongs in the About copy, not a fifth card, or the grid stops reading as a deliberate set.
+**Dark sections (`section-dark`) and dark cards (`card-dark`).** Both use the `on-surface`/`surface` pairing at section scale — pure black background, white text. Cards inside a dark section are separated from the section background by a 1px `surface`-at-10%-opacity border only; there is no second dark fill value.
 
 ## Do's and Don'ts
 
-- **Do** keep `tertiary` (#5B5EC4) on the featured-project card only. It exists to give the page one focal point; a second use anywhere flattens that hierarchy.
-- **Don't** resize every bento card to the same dimensions. Uniform tiles turn this into a generic grid layout and the direction stops being a bento grid at all.
-- **Do** use `data-sm` (JetBrains Mono) only for tech-stack chips. It's a texture accent, not a body typeface — if it starts appearing in headings or paragraphs, remove it.
-- **Don't** add a drop shadow to a card at rest. Depth comes from the Neutral→Surface tonal step and hairline borders; shadow is reserved for hover only.
-- **Do** keep body copy inside its 65-character measure even inside a wide card — add internal padding or a max-width, don't let a paragraph run edge-to-edge.
-- **Don't** introduce a third typeface. Space Grotesk (display), Work Sans (body/labels), JetBrains Mono (data only) is the complete set.
-- **Do** use warm-tinted neutrals everywhere, including in any exported images or screenshots used on the page. A pure `#FFFFFF` background pasted into a bento card will look visibly wrong next to `{colors.surface}`.
-- **Don't** center the hero or bio text. The layout is asymmetric and flush-left by default; centering anything undoes the bento grid's sense of intentional placement.
-- **Do** alternate light and dark strictly section-by-section (light, light, dark, dark, light, light). Two dark sections in a row with a light one skipped between them breaks the pacing rhythm the alternation exists to create.
-- **Don't** invent a second dark background value. `card-dark` and `section-dark` share the exact same `on-surface` fill; separation comes from a `surface`-at-10% border, never from a lighter or bluer "elevated dark" tone.
+- **Do** keep `tertiary` (#FD7250) on exactly one card at a time. It is a rare accent in the source, not a secondary brand color.
+- **Don't** use `tertiary` as a button, link, or any small-text color — the source never does, and its contrast against white text is already at the edge of acceptable even at card scale.
+- **Do** use pure `#FFFFFF` and pure `#000000` in this system, unlike a typical warm-neutral system. That's a direct, verified match to the source, not an oversight.
+- **Don't** reintroduce a monospace typeface. The source has none; earlier drafts of this system did and that was a deviation, now corrected.
+- **Do** render `tag-chip` as an outline, never a filled pill. A filled chip is a plausible-looking but incorrect read of the source's actual (unfilled) chip style.
+- **Don't** add a shadow to a card at rest. Depth comes from the Neutral→Surface tonal step and hairline borders only.
+- **Do** keep body copy inside its 65-character measure even inside a wide card.
+- **Don't** center the hero or bio text. The layout is asymmetric and flush-left by default.
+- **Do** alternate light and dark strictly section-by-section. Two dark sections in a row breaks the pacing rhythm.
+- **Don't** invent a second dark background value. `card-dark` and `section-dark` share the exact same `on-surface` fill; separation comes from a `surface`-at-10% border only.

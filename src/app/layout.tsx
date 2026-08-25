@@ -1,23 +1,17 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Work_Sans, JetBrains_Mono } from "next/font/google";
+import { Wix_Madefor_Display, Wix_Madefor_Text } from "next/font/google";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const wixMadeforDisplay = Wix_Madefor_Display({
+  variable: "--font-wix-madefor-display",
   subsets: ["latin"],
-  weight: ["500", "600"],
+  weight: ["700"],
 });
 
-const workSans = Work_Sans({
-  variable: "--font-work-sans",
+const wixMadeforText = Wix_Madefor_Text({
+  variable: "--font-wix-madefor-text",
   subsets: ["latin"],
   weight: ["400", "500"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -30,7 +24,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${workSans.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${wixMadeforDisplay.variable} ${wixMadeforText.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

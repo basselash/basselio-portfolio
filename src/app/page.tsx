@@ -126,9 +126,7 @@ export default function Home() {
             <p>Nile University</p>
             <p className="mt-1 text-secondary">B.Sc. Computer Science</p>
           </div>
-          <p className="mt-6 font-data text-xs text-primary">
-            Open to internships
-          </p>
+          <p className="mt-6 text-xs text-primary">Open to internships</p>
         </div>
 
         <div className="rounded-lg border border-border bg-surface p-8 md:col-span-2">
@@ -147,7 +145,7 @@ export default function Home() {
             {EXPERTISE.map((item) => (
               <span
                 key={item}
-                className="rounded-full bg-subtle px-3 py-1 text-xs text-primary"
+                className="rounded-full border border-border px-3 py-1 text-xs text-on-surface"
               >
                 {item}
               </span>
@@ -161,7 +159,7 @@ export default function Home() {
             {TECH_STACK.map((item) => (
               <span
                 key={item}
-                className="rounded-full bg-subtle px-3 py-1 font-data text-xs text-primary"
+                className="rounded-full border border-border px-3 py-1 text-xs text-on-surface"
               >
                 {item}
               </span>
@@ -189,26 +187,26 @@ export default function Home() {
       <section id="work" className="mx-auto max-w-6xl px-6 pb-24 md:px-16">
         <Eyebrow>Selected Work</Eyebrow>
         <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div className="rounded-lg border border-border bg-surface p-8">
-            <h3 className="font-display text-2xl font-semibold text-on-surface">
+          <div className="rounded-lg bg-tertiary p-8 text-surface">
+            <h3 className="font-display text-2xl font-semibold">
               Coin &amp; Cloth
             </h3>
-            <p className={`${label} mt-1 text-secondary`}>
+            <p className={`${label} mt-1 text-surface/80`}>
               Clothing &amp; Accessories Store — UI/UX Case Study
             </p>
-            <p className="mt-4 leading-relaxed text-on-surface">
+            <p className="mt-4 leading-relaxed text-surface/90">
               A full UI/UX design for an e-commerce concept selling clothing
               and accessories — product browsing, cart, and checkout flows
               designed end-to-end in Figma.
             </p>
-            <div className="mt-6 grid grid-cols-2 gap-4 border-t border-border pt-6">
+            <div className="mt-6 grid grid-cols-2 gap-4 border-t border-surface/20 pt-6">
               <div>
-                <span className={`${label} text-secondary`}>Role</span>
-                <p className="mt-1 text-on-surface">UI/UX Design</p>
+                <span className={`${label} text-surface/70`}>Role</span>
+                <p className="mt-1">UI/UX Design</p>
               </div>
               <div>
-                <span className={`${label} text-secondary`}>Tool</span>
-                <p className="mt-1 text-on-surface">Figma</p>
+                <span className={`${label} text-surface/70`}>Tool</span>
+                <p className="mt-1">Figma</p>
               </div>
             </div>
           </div>
@@ -221,16 +219,10 @@ export default function Home() {
             </div>
             <div className="mt-4 grid grid-cols-3 gap-3">
               {Array.from({ length: 6 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="rounded-md p-3"
-                  style={{
-                    backgroundColor: i % 2 === 0 ? "#F6D9C9" : "#E9E9F7",
-                  }}
-                >
+                <div key={i} className="rounded-md bg-subtle p-3">
                   <div className="aspect-square rounded-sm bg-surface" />
-                  <div className="mt-2 h-2 w-3/4 rounded-full bg-surface/70" />
-                  <div className="mt-1 h-2 w-1/2 rounded-full bg-surface/50" />
+                  <div className="mt-2 h-2 w-3/4 rounded-full bg-surface" />
+                  <div className="mt-1 h-2 w-1/2 rounded-full bg-surface/60" />
                 </div>
               ))}
             </div>
@@ -324,7 +316,7 @@ export default function Home() {
           </div>
           <div>
             <h3 className={`${label} text-secondary`}>Elsewhere</h3>
-            <div className="mt-4 flex flex-col gap-3 font-data text-sm">
+            <div className="mt-4 flex flex-col gap-3 text-sm">
               {ELSEWHERE_LINKS.map((link) => (
                 <a
                   key={link.label}

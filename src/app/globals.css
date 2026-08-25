@@ -1,17 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --color-primary: #9c3417;
-  --color-primary-hover: #7a2812;
-  --color-secondary: #6b655b;
-  --color-tertiary: #5b5ec4;
-  --color-tertiary-light: #8082d6;
-  --color-neutral: #f2eee7;
-  --color-surface: #fdfcfb;
-  --color-on-surface: #1b1712;
-  --color-subtle: #f6d9c9;
-  --color-border: #e4ded2;
-  --color-error: #b23b26;
+  --color-primary: #363636;
+  --color-primary-hover: #1f1f1f;
+  --color-secondary: #5c5c5c;
+  --color-tertiary: #fd7250;
+  --color-neutral: #f4f4f4;
+  --color-surface: #ffffff;
+  --color-on-surface: #000000;
+  --color-subtle: #ededed;
+  --color-border: #e0e0e0;
+  --color-error: #c23b2e;
 }
 
 @theme inline {
@@ -19,7 +18,6 @@
   --color-primary-hover: var(--color-primary-hover);
   --color-secondary: var(--color-secondary);
   --color-tertiary: var(--color-tertiary);
-  --color-tertiary-light: var(--color-tertiary-light);
   --color-neutral: var(--color-neutral);
   --color-surface: var(--color-surface);
   --color-on-surface: var(--color-on-surface);
@@ -27,9 +25,8 @@
   --color-border: var(--color-border);
   --color-error: var(--color-error);
 
-  --font-display: var(--font-space-grotesk);
-  --font-body: var(--font-work-sans);
-  --font-data: var(--font-jetbrains-mono);
+  --font-display: var(--font-wix-madefor-display);
+  --font-body: var(--font-wix-madefor-text);
 
   --radius-sm: 8px;
   --radius-md: 12px;
