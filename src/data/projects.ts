@@ -31,6 +31,10 @@ export type ProjectVideoAsset = {
   src: string;
   poster?: string;
   label: string;
+  /** CSS aspect-ratio (e.g. "16/9", "8/5") matching the source recording's
+   * actual dimensions, so object-cover doesn't crop into the frame.
+   * Defaults to "16/9" if omitted. */
+  aspectRatio?: string;
 };
 
 /** How much editorial space a project gets in the Selected Work grid. */
@@ -98,6 +102,9 @@ export const PROJECTS: Project[] = [
       src: "/videos/coin-cloth-demo.mp4",
       poster: "/videos/coin-cloth-poster.jpg",
       label: "Website walkthrough",
+      // Real recording is 2880x1800 (converted to 1280x800) — 8:5, not the
+      // 16:9 a generic video container would assume.
+      aspectRatio: "8/5",
     },
   },
 ];

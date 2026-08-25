@@ -61,8 +61,11 @@ export function ProjectCard({ project }: { project: Project }) {
 
       {project.video && (
         <div
-          className="relative aspect-video w-full overflow-hidden"
-          style={{ marginTop: project.gallery ? 1 : 0 }}
+          className="relative w-full overflow-hidden"
+          style={{
+            aspectRatio: project.video.aspectRatio ?? "16/9",
+            marginTop: project.gallery ? 1 : 0,
+          }}
         >
           <ProjectVideo video={project.video} theme={theme} />
           <span
