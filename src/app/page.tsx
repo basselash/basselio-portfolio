@@ -1,5 +1,6 @@
 import { PROJECTS } from "@/data/projects";
 import { ProjectCard } from "@/components/ProjectCard";
+import { CvDownloadCard } from "@/components/CvDownloadCard";
 
 const SECTION_LINKS = [
   { href: "#work", label: "Work" },
@@ -90,7 +91,7 @@ export default function Home() {
 
       {/* Hero bento grid */}
       <section className="mx-auto grid max-w-6xl grid-cols-1 gap-6 px-6 pb-8 pt-16 md:grid-cols-4 md:px-16">
-        <div className="rounded-lg border border-border bg-surface p-8 md:col-span-3">
+        <div className="rounded-lg border border-border bg-surface p-8 md:col-span-2">
           <h1 className="max-w-2xl font-display text-4xl font-semibold leading-[1.05] tracking-[-0.03em] text-on-surface md:text-[56px]">
             Crafting interfaces, then building them for real.
           </h1>
@@ -117,14 +118,16 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex flex-col justify-between rounded-lg border border-border bg-surface p-8 md:col-span-1">
-          <h2 className={`${label} text-secondary`}>Currently</h2>
-          <div className="mt-3 text-on-surface">
+        <div className="flex flex-col justify-between rounded-lg bg-tertiary p-8 text-surface md:col-span-1">
+          <h2 className={`${label} text-surface/80`}>Currently</h2>
+          <div className="mt-3">
             <p>Nile University</p>
-            <p className="mt-1 text-secondary">B.Sc. Computer Science</p>
+            <p className="mt-1 text-surface/80">B.Sc. Computer Science</p>
           </div>
-          <p className="mt-6 text-xs text-primary">Open to internships</p>
+          <p className="mt-6 text-xs font-medium">Open to internships</p>
         </div>
+
+        <CvDownloadCard />
 
         <div className="rounded-lg border border-border bg-surface p-8 md:col-span-2">
           <h2 className={`${label} text-secondary`}>About</h2>

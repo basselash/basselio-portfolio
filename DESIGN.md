@@ -223,7 +223,9 @@ Radius is hierarchical: bento cards use 24px, buttons and inputs use 12px, and t
 
 **Tag chips (`tag-chip`).** Outline pills, not filled — `surface` background, `on-surface` text, a 1px `border` stroke, full radius. This matches the source's "Interaction Design"-style expertise chips exactly, which are unfilled outlines rather than colored pills.
 
-**Featured/accent card (`card-featured`).** The only place `tertiary` appears. Flat fill, no gradient — the source uses a solid coral rectangle, not a gradient. Reserved for exactly one card at a time.
+**Accent card (`card-featured`).** The only place the portfolio's own `tertiary` appears — currently the hero's "Currently" status card. Flat fill, no gradient — the source uses a solid coral rectangle, not a gradient. Reserved for exactly one card at a time; if that card ever changes, the color moves with it rather than gaining a second instance.
+
+**Résumé card (`CvDownloadCard`).** A `card-dark` variant that stands alone in a light section rather than living inside `section-dark` — same `on-surface`/`surface` pairing, same reasoning (reuse the one dark fill, don't invent a second). It checks for the résumé file at load (`fetch(…, {method:"HEAD"})`) and shows a working download link if present, or an honest "Coming soon" label if not — the same fallback discipline as `ProjectImage`/`ProjectVideo`, applied to a static asset rather than a rendered one.
 
 **Project cards are the one deliberate exception to this token system.** Selected Work renders each project through its own `theme` (background/surface/text/textMuted/accent/fontDisplay, defined per-project in `src/data/projects.ts`) rather than the portfolio's `primary`/`neutral`/`surface` tokens — a case-study card is supposed to look like the project it represents, not like a reskinned version of the portfolio chrome. Everything *around* the card — the section grid, the `Eyebrow` label, spacing, the hover-lift interaction — stays on the portfolio's own system. Only the inside of the card (its colors, its title typeface) belongs to the project.
 
@@ -233,7 +235,7 @@ Radius is hierarchical: bento cards use 24px, buttons and inputs use 12px, and t
 
 **Eyebrow labels (`eyebrow`).** A small outlined pill introducing a section. In a light section: `surface` fill, `on-surface` text, `border` stroke. Inside `section-dark`: transparent fill, `surface` text and border.
 
-**Dark sections (`section-dark`) and dark cards (`card-dark`).** Both use the `on-surface`/`surface` pairing at section scale — pure black background, white text. Cards inside a dark section are separated from the section background by a 1px `surface`-at-10%-opacity border only; there is no second dark fill value.
+**Dark sections (`section-dark`) and dark cards (`card-dark`).** Both use the `on-surface`/`surface` pairing — pure black background, white text — whether at full section scale or as a single card sitting in an otherwise light grid (the résumé card). Cards inside a dark section are separated from the section background by a 1px `surface`-at-10%-opacity border only; there is no second dark fill value anywhere in the system.
 
 ## Do's and Don'ts
 
