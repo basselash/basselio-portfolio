@@ -1,7 +1,7 @@
 import { PROJECTS } from "@/data/projects";
 import { ProjectCard } from "@/components/ProjectCard";
 
-const NAV_LINKS = [
+const SECTION_LINKS = [
   { href: "#work", label: "Work" },
   { href: "#about-full", label: "About" },
   { href: "#contact", label: "Contact" },
@@ -40,12 +40,6 @@ const PRACTICE_AREAS = [
   },
 ];
 
-const FOOTER_LINKS = [
-  { href: "#work", label: "Work" },
-  { href: "#about-full", label: "About" },
-  { href: "#contact", label: "Contact" },
-];
-
 const ELSEWHERE_LINKS = [
   { href: "mailto:basselazab81@gmail.com", label: "Email" },
   {
@@ -82,7 +76,7 @@ export default function Home() {
           Bassel Azab / UI-UX Designer
         </span>
         <nav className={`${label} flex gap-6 text-secondary`}>
-          {NAV_LINKS.map((link) => (
+          {SECTION_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -270,7 +264,7 @@ export default function Home() {
           <div>
             <h3 className={`${label} text-secondary`}>Quick Links</h3>
             <div className="mt-4 flex flex-col gap-3">
-              {FOOTER_LINKS.map((link) => (
+              {SECTION_LINKS.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}

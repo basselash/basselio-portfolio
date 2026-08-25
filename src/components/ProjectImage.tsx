@@ -6,13 +6,11 @@ import type { ProjectImageSlot, ProjectTheme } from "@/data/projects";
 export function ProjectImage({
   image,
   theme,
-  className = "",
   large = false,
   scrollOnHover = false,
 }: {
   image: ProjectImageSlot;
   theme: ProjectTheme;
-  className?: string;
   /** Use a more substantial placeholder glyph for a large hero-scale slot. */
   large?: boolean;
   /**
@@ -45,7 +43,7 @@ export function ProjectImage({
   if (failed) {
     return (
       <div
-        className={`flex h-full w-full flex-col items-center justify-center gap-3 p-4 text-center ${className}`}
+        className="flex h-full w-full flex-col items-center justify-center gap-3 p-4 text-center"
         style={{ backgroundColor: theme.surface, color: theme.textMuted }}
       >
         <svg
@@ -81,7 +79,7 @@ export function ProjectImage({
         scrollOnHover
           ? "transition-[object-position] duration-[6000ms] ease-in-out group-hover:object-bottom"
           : ""
-      } ${className}`}
+      }`}
       onError={() => setFailed(true)}
     />
   );
