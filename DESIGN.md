@@ -146,6 +146,21 @@ components:
     typography: "{typography.body-sm}"
     rounded: "{rounded.sm}"
     padding: "{spacing.sm}"
+  eyebrow:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.on-surface}"
+    typography: "{typography.label-caps}"
+    rounded: "{rounded.full}"
+    padding: "{spacing.sm}"
+  section-dark:
+    backgroundColor: "{colors.on-surface}"
+    textColor: "{colors.surface}"
+    typography: "{typography.body-md}"
+  card-dark:
+    backgroundColor: "{colors.on-surface}"
+    textColor: "{colors.surface}"
+    rounded: "{rounded.lg}"
+    padding: "{spacing.lg}"
 ---
 
 # Sunbaked Bento
@@ -153,6 +168,8 @@ components:
 ## Overview
 
 This is a portfolio read once, fast, by someone deciding whether to keep looking — a recruiter or hiring designer scanning on a laptop for twenty seconds before they either scroll or leave. It has to communicate "this person can design *and* build" in that window, which is why it borrows the **bento grid**: a modular field of unevenly-sized cards (intro, skills, the one flagship project, contact) that lets the eye sample the whole page without reading top-to-bottom first.
+
+The page alternates **light and dark registers** section by section: light for the hero and the work sample (fast, scannable, credential-forward), dark for "What I Do" and the fuller "About" (slower, asks for a moment of actual reading). The alternation is the pacing device — it tells a skimming reader when to speed up and when the page wants them to slow down, without needing a scroll-triggered animation to do it. Dark sections reuse existing tokens rather than introducing a separate dark palette: `on-surface` becomes the section background and `surface` becomes the text, the same pairing `tooltip` already uses at component scale, just applied to a whole section.
 
 The direction is **Bento Studio**, adapted from a genre of designer-portfolio template (light, card-based, one confident accent) rather than invented from nothing — but the palette is not borrowed. It's re-anchored to something specific to the person it represents: Cairo sandstone and a Nile dusk, standing in for someone building his design career from Nile University. That's the difference between reusing a layout idea and reusing a look.
 
@@ -192,6 +209,8 @@ Spacing runs on an **8px base**, with a 4px half-step reserved for chip padding 
 
 The page is intentionally **asymmetric**: the hero card is left-weighted, the featured-project card is oversized relative to everything around it, and nothing on the page is centered except short standalone labels.
 
+Full page order: **Hero** (bento grid) → **Selected Work** (one case-study block, light) → **What I Do** (dark, four practice-area cards in a 2×2 grid) → **About** (dark, a longer-form bio) → **CTA** (light, one line + one action) → **Footer** (light, three columns). Each dark section opens with an `eyebrow` label ("WHAT I DO", "ABOUT") in the outlined-pill style, signaling a section break without a heavy divider.
+
 ## Elevation & Depth
 
 Depth comes primarily from the **tonal step between Neutral (page) and Surface (cards)** — a half-step in lightness, both warm, so a card reads as "a different paper stock" rather than "an object floating above the page." A 1px `border` hairline reinforces card edges where the tonal contrast alone is too subtle (e.g. two adjacent cards of similar size).
@@ -214,6 +233,14 @@ Radius is hierarchical, tied to a card's size and importance: bento cards use **
 
 **Nav.** A `nav-badge` pill (name + role) sits top-left; plain-text nav links sit top-right in `label-caps`, `secondary` at rest and `primary` when active — no underline animation beyond a color change, kept quiet since the page's loudness budget is already spent on the bento cards.
 
+**Eyebrow labels (`eyebrow`).** A small outlined pill introducing a section ("SELECTED WORK", "WHAT I DO", "ABOUT"). In a light section it renders as the `eyebrow` token pair (`surface` fill, `on-surface` text) with a `border` rule; inside a `section-dark`, the same component is re-skinned as transparent with a `surface`-colored 1px border and `surface` text — a border-only pill reads correctly against either background without needing a second token pair, since it never relies on its own fill for contrast.
+
+**Dark sections (`section-dark`) and dark cards (`card-dark`).** Both reuse the `on-surface`/`surface` pairing already established by `tooltip`, just at section scale. Cards inside a dark section are distinguished from the section background by a 1px `surface`-at-10%-opacity border only — there is no separate "dark card fill," because introducing one would mean the system needs a second near-black value, and it doesn't.
+
+**Selected Work.** One case-study block per project, light section: a text card (title, one-line role, short description, year) beside a larger preview panel. The preview is built from the palette's own tones (surface panels, primary/tertiary accents) rather than a literal screenshot when no real product shot exists yet — an honest placeholder in-system beats a borrowed stock image.
+
+**What I Do.** Exactly four `card-dark` tiles in a 2×2 grid, each a number (`01`–`04`), a short title, and one sentence. Four is the limit — a fifth practice area belongs in the About copy, not a fifth card, or the grid stops reading as a deliberate set.
+
 ## Do's and Don'ts
 
 - **Do** keep `tertiary` (#5B5EC4) on the featured-project card only. It exists to give the page one focal point; a second use anywhere flattens that hierarchy.
@@ -224,3 +251,5 @@ Radius is hierarchical, tied to a card's size and importance: bento cards use **
 - **Don't** introduce a third typeface. Space Grotesk (display), Work Sans (body/labels), JetBrains Mono (data only) is the complete set.
 - **Do** use warm-tinted neutrals everywhere, including in any exported images or screenshots used on the page. A pure `#FFFFFF` background pasted into a bento card will look visibly wrong next to `{colors.surface}`.
 - **Don't** center the hero or bio text. The layout is asymmetric and flush-left by default; centering anything undoes the bento grid's sense of intentional placement.
+- **Do** alternate light and dark strictly section-by-section (light, light, dark, dark, light, light). Two dark sections in a row with a light one skipped between them breaks the pacing rhythm the alternation exists to create.
+- **Don't** invent a second dark background value. `card-dark` and `section-dark` share the exact same `on-surface` fill; separation comes from a `surface`-at-10% border, never from a lighter or bluer "elevated dark" tone.
