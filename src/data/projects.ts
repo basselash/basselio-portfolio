@@ -61,26 +61,28 @@ export const PROJECTS: Project[] = [
     slug: "coin-and-cloth",
     title: "Coin & Cloth",
     // Coin & Cloth is a discovery website for a physical retail space —
+    // "a curated retail destination in Cairo," in the site's own words —
     // not a store to buy from online. It exists to make people want to
     // visit in person.
-    category: "Retail Discovery Website",
+    category: "Curated Retail & Arcade",
     description:
-      "A website designed to introduce people to the physical Coin & Cloth store — a space featuring multiple fashion brands, an arcade, and a 360° experience — and make them want to visit. Not a shop; a preview of a place.",
+      "A discovery website for Coin & Cloth — five spaces under one roof in Cairo: a fashion floor, an artist floor, an arcade, a community hub, and a platform for local brands. Built to get people excited to visit in person, not to sell to them online.",
     role: "UI/UX Design",
     tool: "Figma",
-    tags: ["Retail Experience", "Multi-Brand", "Arcade", "360° Experience"],
+    tags: ["Fashion Floor", "Arcade", "Local Brands", "Community Hub"],
     size: "featured",
-    // Placeholder brand palette standing in for Coin & Cloth's own visual
-    // identity — a warm boutique black/cream/brass system suited to a
-    // physical fashion-and-entertainment space. Replace with the real
-    // values sampled from the Coin & Cloth Figma file once available.
+    // Real palette and headline typeface, read directly from the actual
+    // Coin & Cloth design (github.com/basselash/basselio-portfolio →
+    // shared via a Claude Design artifact): a deep wine/maroon ground,
+    // warm cream type, and an amber accent on CTAs. Fredoka matches the
+    // rounded display face used for headlines in the real design.
     theme: {
-      background: "#17130F",
-      surface: "#241E19",
-      text: "#F3ECE3",
-      textMuted: "#B8AA98",
-      accent: "#C7A567",
-      fontDisplay: "var(--font-fraunces), Georgia, serif",
+      background: "#2B0E17",
+      surface: "#3A1420",
+      text: "#F5ECE1",
+      textMuted: "#C7A69B",
+      accent: "#EFA83C",
+      fontDisplay: "var(--font-fredoka), sans-serif",
     },
     // Every path below is a placeholder location, not a real asset — see
     // public/images/projects/coin-cloth/README.md for exactly what to drop
