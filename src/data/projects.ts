@@ -60,6 +60,55 @@ export type Project = {
   video?: ProjectVideoAsset;
 };
 
+// ---------------------------------------------------------------------
+// TO ADD A NEW PROJECT: copy the block below into the PROJECTS array,
+// fill it in, and drop your assets in the two folders it points at.
+// Nothing else in the codebase needs to change — the grid, the card
+// layout, and the hover behavior all read from this array automatically.
+//
+// {
+//   slug: "project-slug",           // unique, used for the React key only
+//   title: "Project Name",
+//   category: "What it actually is", // factual, not a generic label
+//   description: "1-2 sentences. What it is, who it's for, what it's not.",
+//   role: "UI/UX Design",            // or "UI/UX Design, Front-End Dev", etc.
+//   tool: "Figma",
+//   tags: ["Real", "Section", "Names", "From the project"],
+//   size: "featured",                // "featured" = full width, "large" = 8/12, "medium" = 6/12
+//   theme: {
+//     background: "#______",         // the project's own dominant color
+//     surface:    "#______",         // a secondary tone, for placeholder panels
+//     text:       "#______",         // primary text on `background`
+//     textMuted:  "#______",         // secondary/muted text on `background`
+//     accent:     "#______",         // the project's own accent — sparingly
+//     fontDisplay: "system-ui, sans-serif", // swap in a project-specific font
+//                                            // via next/font/google in layout.tsx first
+//   },
+//   // hero, gallery, and video are all optional — include only what you have.
+//   // Real assets only: point at real files. ProjectImage/ProjectVideo show
+//   // an honest labeled placeholder for anything that doesn't exist yet.
+//   hero: {
+//     key: "home", label: "Homepage",
+//     src: "/images/projects/project-slug/home.jpg", alt: "…",
+//   },
+//   gallery: [
+//     { key: "screen-2", label: "Screen 2", src: "/images/projects/project-slug/screen-2.jpg", alt: "…" },
+//   ],
+//   video: {
+//     src: "/videos/project-slug-demo.mp4",
+//     poster: "/videos/project-slug-poster.jpg",
+//     label: "Website walkthrough",
+//     aspectRatio: "16/9", // match your actual recording — check with ffprobe
+//   },
+// },
+//
+// Asset folders: put images in public/images/projects/<slug>/ and videos
+// in public/videos/. Large exports (screen recordings, retina screenshots)
+// should be compressed first — see the commands used for Coin & Cloth's
+// assets in this file's git history, or just ask: resize images to ~1600px
+// wide JPEG, and re-encode video to H.264 mp4 scaled to ~1280px wide.
+// ---------------------------------------------------------------------
+
 export const PROJECTS: Project[] = [
   {
     slug: "coin-and-cloth",
