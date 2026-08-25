@@ -71,22 +71,21 @@ export const PROJECTS: Project[] = [
     tool: "Figma",
     tags: ["Fashion Floor", "Arcade", "Local Brands", "Community Hub"],
     size: "featured",
-    // Real palette and headline typeface, read directly from the actual
-    // Coin & Cloth design (github.com/basselash/basselio-portfolio →
-    // shared via a Claude Design artifact): a deep wine/maroon ground,
-    // warm cream type, and an amber accent on CTAs. Fredoka matches the
-    // rounded display face used for headlines in the real design.
+    // Exact brand hexes, straight from Coin & Cloth's own DESIGN.md (sampled
+    // directly from the logo): burgundy #50182A, cream #F6E5DC, gold
+    // #F9BA19. This is the project's real dark-mode assignment — page
+    // background becomes the logo's burgundy field, text becomes its cream.
+    // fontDisplay is the real face too: Fraunces, run with its WONK axis
+    // engaged (see the title's fontVariationSettings in ProjectCard) to
+    // match the logo's own hand-drawn, slightly irregular lettering.
     theme: {
-      background: "#2B0E17",
-      surface: "#3A1420",
-      text: "#F5ECE1",
-      textMuted: "#C7A69B",
-      accent: "#EFA83C",
-      fontDisplay: "var(--font-fredoka), sans-serif",
+      background: "#50182A",
+      surface: "#6F2436",
+      text: "#F6E5DC",
+      textMuted: "#D9BBAE",
+      accent: "#F9BA19",
+      fontDisplay: "var(--font-fraunces), Georgia, serif",
     },
-    // Every path below is a placeholder location, not a real asset — see
-    // public/images/projects/coin-cloth/README.md for exactly what to drop
-    // in and where. Nothing here is a fabricated screenshot.
     logo: {
       src: "/images/projects/coin-cloth/logo.svg",
       alt: "Coin & Cloth logo",
@@ -94,26 +93,26 @@ export const PROJECTS: Project[] = [
     hero: {
       key: "home",
       label: "Homepage",
-      src: "/images/projects/coin-cloth/home.png",
+      src: "/images/projects/coin-cloth/home.jpg",
       alt: "Coin & Cloth homepage design",
     },
     gallery: [
       {
         key: "brands",
         label: "Brands",
-        src: "/images/projects/coin-cloth/brands.png",
+        src: "/images/projects/coin-cloth/brands.jpg",
         alt: "Coin & Cloth brand discovery screen",
       },
       {
         key: "arcade",
         label: "Arcade",
-        src: "/images/projects/coin-cloth/arcade.png",
+        src: "/images/projects/coin-cloth/arcade.jpg",
         alt: "Coin & Cloth arcade section",
       },
       {
         key: "threesixty",
         label: "360° Experience",
-        src: "/images/projects/coin-cloth/360.png",
+        src: "/images/projects/coin-cloth/360.jpg",
         alt: "Coin & Cloth 360° store preview",
       },
     ],

@@ -24,7 +24,10 @@ export function ProjectCard({ project }: { project: Project }) {
         </p>
         <h3
           className="mt-2 text-3xl font-semibold md:text-4xl"
-          style={{ fontFamily: theme.fontDisplay }}
+          style={{
+            fontFamily: theme.fontDisplay,
+            fontVariationSettings: "'WONK' 1",
+          }}
         >
           {project.title}
         </h3>
