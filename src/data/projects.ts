@@ -90,32 +90,10 @@ export const PROJECTS: Project[] = [
       src: "/images/projects/coin-cloth/logo.svg",
       alt: "Coin & Cloth logo",
     },
-    hero: {
-      key: "home",
-      label: "Homepage",
-      src: "/images/projects/coin-cloth/home.jpg",
-      alt: "Coin & Cloth homepage design",
-    },
-    gallery: [
-      {
-        key: "brands",
-        label: "Brands",
-        src: "/images/projects/coin-cloth/brands.jpg",
-        alt: "Coin & Cloth brand discovery screen",
-      },
-      {
-        key: "arcade",
-        label: "Arcade",
-        src: "/images/projects/coin-cloth/arcade.jpg",
-        alt: "Coin & Cloth arcade section",
-      },
-      {
-        key: "threesixty",
-        label: "360° Experience",
-        src: "/images/projects/coin-cloth/360.jpg",
-        alt: "Coin & Cloth 360° store preview",
-      },
-    ],
+    // Hero/gallery screenshots were tried and dropped by request — the
+    // video walkthrough alone carries the card now. The types/fields
+    // still exist on Project so they (or a future project) can use them
+    // again without any component changes.
     video: {
       src: "/videos/coin-cloth-demo.mp4",
       poster: "/videos/coin-cloth-poster.jpg",
