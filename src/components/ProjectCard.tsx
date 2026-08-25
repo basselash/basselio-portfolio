@@ -1,35 +1,80 @@
 import type { Project } from "@/data/projects";
+import { ProjectImage } from "./ProjectImage";
 import { ProjectVideo } from "./ProjectVideo";
 
 const label = "text-[11px] font-medium uppercase tracking-[0.1em]";
+
+const SPAN_CLASS: Record<Project["size"], string> = {
+  featured: "md:col-span-12",
+  large: "md:col-span-8",
+  medium: "md:col-span-6",
+};
 
 export function ProjectCard({ project }: { project: Project }) {
   const { theme } = project;
 
   return (
-    <div
-      className="group grid grid-cols-1 overflow-hidden rounded-lg transition-transform duration-300 ease-out hover:-translate-y-1 md:grid-cols-5"
+    <article
+      className={`group col-span-1 overflow-hidden rounded-lg transition-transform duration-300 ease-out hover:-translate-y-1 ${SPAN_CLASS[project.size]}`}
       style={{ backgroundColor: theme.background, color: theme.text }}
     >
-      <div className="overflow-hidden md:col-span-3">
-        <div className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]">
-          <ProjectVideo preview={project.preview} theme={theme} label={project.title} />
-        </div>
+      <div className="p-6 pb-0 md:p-8 md:pb-0">
+        <p className={label} style={{ color: theme.accent }}>
+          {project.category}
+        </p>
+        <h3
+          className="mt-2 text-3xl font-semibold md:text-4xl"
+          style={{ fontFamily: theme.fontDisplay }}
+        >
+          {project.title}
+        </h3>
       </div>
 
-      <div className="flex flex-col justify-center gap-4 p-8 md:col-span-2">
-        <div>
-          <h3
-            className="text-2xl font-semibold md:text-3xl"
-            style={{ fontFamily: theme.fontDisplay }}
-          >
-            {project.title}
-          </h3>
-          <p className={`${label} mt-2`} style={{ color: theme.textMuted }}>
-            {project.tagline}
-          </p>
+      {project.hero && (
+        <div className="mt-6 overflow-hidden">
+          <div className="aspect-[16/9] w-full transition-transform duration-500 ease-out group-hover:scale-[1.02]">
+            <ProjectImage image={project.hero} theme={theme} large />
+          </div>
         </div>
+      )}
 
+      {project.gallery && project.gallery.length > 0 && (
+        <div
+          className="grid grid-cols-3 gap-px"
+          style={{ backgroundColor: `${theme.textMuted}26` }}
+        >
+          {project.gallery.map((shot) => (
+            <div key={shot.key} className="relative aspect-square overflow-hidden">
+              <ProjectImage image={shot} theme={theme} />
+              <span
+                className={`${label} pointer-events-none absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/70 to-transparent px-2 pb-2 pt-6 text-white opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100`}
+              >
+                {shot.label}
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {project.video && (
+        <div
+          className="relative aspect-video w-full overflow-hidden"
+          style={{ marginTop: project.gallery ? 1 : 0 }}
+        >
+          <ProjectVideo video={project.video} theme={theme} />
+          <span
+            className={`${label} pointer-events-none absolute left-4 top-4 flex items-center gap-1.5 rounded-full px-3 py-1.5`}
+            style={{ backgroundColor: `${theme.background}CC`, color: theme.text }}
+          >
+            <svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor">
+              <path d="M1 0.5L7 4L1 7.5V0.5Z" />
+            </svg>
+            {project.video.label}
+          </span>
+        </div>
+      )}
+
+      <div className="flex flex-col gap-4 p-6 md:p-8">
         <p className="leading-relaxed" style={{ color: theme.textMuted }}>
           {project.description}
         </p>
@@ -64,6 +109,6 @@ export function ProjectCard({ project }: { project: Project }) {
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 }

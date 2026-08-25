@@ -229,6 +229,8 @@ Radius is hierarchical: bento cards use 24px, buttons and inputs use 12px, and t
 
 **Project video (`ProjectVideo`).** Muted, looped, `playsInline`, paused via `IntersectionObserver` when scrolled out of view. Falls back to a themed placeholder panel (using the project's own `surface`/`accent`) rather than a broken `<video>` or an invented screenshot when no real recording exists yet at the declared path.
 
+**Project card composition.** A project isn't one image — it's a `hero` (the large primary screen), an optional `gallery` of smaller supporting screens shown as a 3-up strip with a hover-revealed label, and an optional `video` walkthrough, stacked as one continuous themed presentation with no gaps or borders between them. Every one of those (`ProjectImage`, `ProjectVideo`) degrades to an honest labeled placeholder — never a broken asset, never an invented one — so the architecture is fully usable before any real asset exists. A project declares a `size` (`featured`/`large`/`medium`) that controls its column span in the 12-column Selected Work grid, so future projects can sit side-by-side at different scales rather than every project defaulting to full width.
+
 **Eyebrow labels (`eyebrow`).** A small outlined pill introducing a section. In a light section: `surface` fill, `on-surface` text, `border` stroke. Inside `section-dark`: transparent fill, `surface` text and border.
 
 **Dark sections (`section-dark`) and dark cards (`card-dark`).** Both use the `on-surface`/`surface` pairing at section scale — pure black background, white text. Cards inside a dark section are separated from the section background by a 1px `surface`-at-10%-opacity border only; there is no second dark fill value.

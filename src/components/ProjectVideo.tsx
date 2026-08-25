@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { ProjectPreview, ProjectTheme } from "@/data/projects";
+import type { ProjectTheme, ProjectVideoAsset } from "@/data/projects";
 
 function PlayGlyph({ color }: { color: string }) {
   return (
@@ -13,13 +13,11 @@ function PlayGlyph({ color }: { color: string }) {
 }
 
 export function ProjectVideo({
-  preview,
+  video,
   theme,
-  label,
 }: {
-  preview: ProjectPreview;
+  video: ProjectVideoAsset;
   theme: ProjectTheme;
-  label: string;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [failed, setFailed] = useState(false);
@@ -29,7 +27,7 @@ export function ProjectVideo({
   // relying on the onError prop alone.
   useEffect(() => {
     const el = videoRef.current;
-    if (!el || preview.type !== "video") return;
+    if (!el) return;
     if (el.error) {
       setFailed(true);
       return;
@@ -37,13 +35,13 @@ export function ProjectVideo({
     const handleError = () => setFailed(true);
     el.addEventListener("error", handleError);
     return () => el.removeEventListener("error", handleError);
-  }, [preview.type]);
+  }, []);
 
   // Pause off-screen video rather than letting it run indefinitely in the
   // background — autoplay/loop shouldn't cost anything once scrolled past.
   useEffect(() => {
     const el = videoRef.current;
-    if (!el || preview.type !== "video" || failed) return;
+    if (!el || failed) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -57,37 +55,34 @@ export function ProjectVideo({
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [preview.type, failed]);
+  }, [failed]);
 
-  const showPlaceholder = preview.type !== "video" || failed;
+  if (failed) {
+    return (
+      <div
+        className="flex h-full min-h-[220px] w-full flex-col items-center justify-center gap-3 p-8 text-center"
+        style={{ backgroundColor: theme.surface, color: theme.textMuted }}
+      >
+        <PlayGlyph color={theme.accent} />
+        <p className="text-[11px] font-medium uppercase tracking-[0.1em]">
+          {video.label} coming soon
+        </p>
+      </div>
+    );
+  }
 
   return (
-    <div className="relative aspect-video w-full overflow-hidden md:aspect-auto md:h-full">
-      {!showPlaceholder && preview.type === "video" && (
-        <video
-          ref={videoRef}
-          className="h-full w-full object-cover"
-          src={preview.src}
-          poster={preview.poster}
-          muted
-          loop
-          playsInline
-          autoPlay
-          preload="metadata"
-          onError={() => setFailed(true)}
-        />
-      )}
-      {showPlaceholder && (
-        <div
-          className="flex h-full min-h-[280px] w-full flex-col items-center justify-center gap-3 p-8 text-center"
-          style={{ backgroundColor: theme.surface, color: theme.textMuted }}
-        >
-          <PlayGlyph color={theme.accent} />
-          <p className="text-[11px] font-medium uppercase tracking-[0.1em]">
-            {label} preview coming soon
-          </p>
-        </div>
-      )}
-    </div>
+    <video
+      ref={videoRef}
+      className="h-full w-full object-cover"
+      src={video.src}
+      poster={video.poster}
+      muted
+      loop
+      playsInline
+      autoPlay
+      preload="metadata"
+      onError={() => setFailed(true)}
+    />
   );
 }

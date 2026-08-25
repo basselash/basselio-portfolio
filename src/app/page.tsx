@@ -189,7 +189,7 @@ export default function Home() {
       {/* Selected Work */}
       <section id="work" className="mx-auto max-w-6xl px-6 pb-24 md:px-16">
         <Eyebrow>Selected Work</Eyebrow>
-        <div className="mt-6 flex flex-col gap-6">
+        <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-12">
           {PROJECTS.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}
@@ -236,12 +236,13 @@ export default function Home() {
               React, so what ships matches what was designed.
             </p>
             <p className="leading-relaxed">
-              Coin &amp; Cloth, an e-commerce concept for a clothing and
-              accessories store, is where that process lives right now — a
-              full UI/UX case study built from the ground up in Figma.
-              He&apos;s early in his career and treats that as an asset:
-              still deliberately picking up new tools and ways of thinking
-              about interfaces rather than defaulting to familiar ones.
+              Coin &amp; Cloth, a discovery website for a physical
+              multi-brand retail space with an arcade and a 360° experience,
+              is where that process lives right now — a full UI/UX case
+              study built from the ground up in Figma. He&apos;s early in
+              his career and treats that as an asset: still deliberately
+              picking up new tools and ways of thinking about interfaces
+              rather than defaulting to familiar ones.
             </p>
           </div>
         </div>
