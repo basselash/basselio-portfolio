@@ -8,12 +8,20 @@ export function ProjectImage({
   theme,
   className = "",
   large = false,
+  scrollOnHover = false,
 }: {
   image: ProjectImageSlot;
   theme: ProjectTheme;
   className?: string;
   /** Use a more substantial placeholder glyph for a large hero-scale slot. */
   large?: boolean;
+  /**
+   * For a full-length page screenshot taller than its frame: stay
+   * top-aligned at rest, then slowly pan down to reveal the rest of the
+   * page on hover (a `group-hover` on an ancestor with `className="group"`
+   * drives it) — no cropping or resizing required on the source image.
+   */
+  scrollOnHover?: boolean;
 }) {
   const imgRef = useRef<HTMLImageElement>(null);
   const [failed, setFailed] = useState(false);
@@ -69,7 +77,11 @@ export function ProjectImage({
       ref={imgRef}
       src={image.src}
       alt={image.alt}
-      className={`h-full w-full object-cover ${className}`}
+      className={`h-full w-full object-cover object-top ${
+        scrollOnHover
+          ? "transition-[object-position] duration-[6000ms] ease-in-out group-hover:object-bottom"
+          : ""
+      } ${className}`}
       onError={() => setFailed(true)}
     />
   );

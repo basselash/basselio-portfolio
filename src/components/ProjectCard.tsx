@@ -33,7 +33,7 @@ export function ProjectCard({ project }: { project: Project }) {
       {project.hero && (
         <div className="mt-6 overflow-hidden">
           <div className="aspect-[16/9] w-full transition-transform duration-500 ease-out group-hover:scale-[1.02]">
-            <ProjectImage image={project.hero} theme={theme} large />
+            <ProjectImage image={project.hero} theme={theme} large scrollOnHover />
           </div>
         </div>
       )}
