@@ -1,18 +1,16 @@
-"use client";
-
-import { useEffect, useState } from "react";
+import fs from "fs";
+import path from "path";
 
 const CV_PATH = "/cv/bassel-azab-resume.pdf";
 const label = "text-[11px] font-medium uppercase tracking-[0.1em]";
 
 export function CvDownloadCard() {
-  const [available, setAvailable] = useState(false);
-
-  useEffect(() => {
-    fetch(CV_PATH, { method: "HEAD" })
-      .then((res) => setAvailable(res.ok))
-      .catch(() => setAvailable(false));
-  }, []);
+  // The résumé is a static file in public/, so its presence is known at
+  // build time — checking on the server avoids the client-side fetch that
+  // used to flash "Coming soon" before flipping to "Download" on load.
+  const available = fs.existsSync(
+    path.join(process.cwd(), "public", CV_PATH)
+  );
 
   return (
     <div className="flex flex-col justify-between rounded-lg bg-on-surface p-8 text-surface md:col-span-1">
