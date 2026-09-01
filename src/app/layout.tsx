@@ -37,7 +37,26 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${wixMadeforDisplay.variable} ${wixMadeforText.variable} ${fraunces.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {/* Runs during parse, before the browser performs its
+            scroll-to-fragment step, so a reload starts at the top of the
+            page instead of dropping the reader back into whichever section
+            they last clicked. Two separate behaviors to suppress: the
+            browser restoring the previous scroll offset, and the #hash
+            left in the URL by the nav. A hash arriving from outside (a
+            shared /#work link) is left alone — only reloads are reset. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{
+if('scrollRestoration' in history){history.scrollRestoration='manual';}
+var n=performance.getEntriesByType('navigation')[0];
+if(n&&n.type==='reload'&&location.hash){
+history.replaceState(null,'',location.pathname+location.search);}
+}catch(e){}})();`,
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
