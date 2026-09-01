@@ -180,7 +180,7 @@ export default function Home() {
       {/* Quick contact row — these are actions, so they use the button
           shape (rounded-md + arrow), never the pill shape the static
           skill/tech tags use. */}
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-3 px-6 pb-24 md:px-16">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-3 px-6 pb-24 md:px-16">
         {ELSEWHERE_LINKS.map((link) => (
           <a
             key={link.label}
