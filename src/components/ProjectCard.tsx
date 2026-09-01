@@ -12,6 +12,10 @@ const SPAN_CLASS: Record<Project["size"], string> = {
 
 export function ProjectCard({ project }: { project: Project }) {
   const { theme } = project;
+  // When the video is the card's first visual it needs the same breathing
+  // room the hero image gets; when it follows one, the two sit flush with
+  // only a hairline between them.
+  const videoFollowsVisual = Boolean(project.hero || project.gallery);
 
   return (
     <article
@@ -61,10 +65,10 @@ export function ProjectCard({ project }: { project: Project }) {
 
       {project.video && (
         <div
-          className="relative w-full overflow-hidden"
+          className={`relative w-full overflow-hidden ${videoFollowsVisual ? "" : "mt-6"}`}
           style={{
             aspectRatio: project.video.aspectRatio ?? "16/9",
-            marginTop: project.gallery ? 1 : 0,
+            marginTop: videoFollowsVisual ? 1 : undefined,
           }}
         >
           <ProjectVideo video={project.video} theme={theme} />

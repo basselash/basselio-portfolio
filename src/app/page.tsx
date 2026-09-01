@@ -70,9 +70,9 @@ function Eyebrow({ children, dark = false }: { children: string; dark?: boolean 
 export default function Home() {
   return (
     <div className="flex-1 bg-neutral">
-      <header className="mx-auto flex max-w-6xl items-center justify-between px-6 pt-8 md:px-16">
+      <header className="mx-auto flex max-w-6xl flex-col gap-4 px-6 pt-8 sm:flex-row sm:items-center sm:justify-between md:px-16">
         <span
-          className={`${label} rounded-full border border-border bg-surface px-4 py-2 text-on-surface`}
+          className={`${label} w-fit whitespace-nowrap rounded-full border border-border bg-surface px-4 py-2 text-on-surface`}
         >
           Bassel Azab / UI-UX Designer
         </span>
@@ -145,7 +145,7 @@ export default function Home() {
             {EXPERTISE.map((item) => (
               <span
                 key={item}
-                className="rounded-full border border-border px-3 py-1 text-xs text-on-surface"
+                className="rounded-full border border-border px-3 py-1 text-xs text-secondary"
               >
                 {item}
               </span>
@@ -159,7 +159,7 @@ export default function Home() {
             {TECH_STACK.map((item) => (
               <span
                 key={item}
-                className="rounded-full border border-border px-3 py-1 text-xs text-on-surface"
+                className="rounded-full border border-border px-3 py-1 text-xs text-secondary"
               >
                 {item}
               </span>
@@ -168,23 +168,43 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quick contact row */}
-      <div className="mx-auto flex max-w-6xl items-center gap-4 px-6 pb-24 md:px-16">
+      {/* Quick contact row — these are actions, so they use the button
+          shape (rounded-md + arrow), never the pill shape the static
+          skill/tech tags use. */}
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-3 px-6 pb-24 md:px-16">
         {ELSEWHERE_LINKS.map((link) => (
           <a
             key={link.label}
             href={link.href}
             target={link.external ? "_blank" : undefined}
             rel={link.external ? "noopener noreferrer" : undefined}
-            className={`${label} rounded-full border border-border bg-surface px-4 py-2 text-secondary transition-colors hover:border-primary hover:text-primary`}
+            className={`${label} inline-flex items-center gap-2 rounded-md border border-border bg-surface px-4 py-2.5 text-on-surface transition-colors hover:bg-on-surface hover:text-surface`}
           >
             {link.label}
+            <svg
+              width="9"
+              height="9"
+              viewBox="0 0 10 10"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M1.5 8.5L8.5 1.5M8.5 1.5H3M8.5 1.5V7"
+                stroke="currentColor"
+                strokeWidth="1.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </a>
         ))}
       </div>
 
       {/* Selected Work */}
-      <section id="work" className="mx-auto max-w-6xl px-6 pb-24 md:px-16">
+      <section
+        id="work"
+        className="mx-auto max-w-6xl scroll-mt-8 px-6 pb-24 md:px-16"
+      >
         <Eyebrow>Selected Work</Eyebrow>
         <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-12">
           {PROJECTS.map((project) => (
@@ -216,7 +236,10 @@ export default function Home() {
       </section>
 
       {/* About (dark, full) */}
-      <section id="about-full" className="bg-on-surface px-6 py-24 md:px-16">
+      <section
+        id="about-full"
+        className="scroll-mt-8 bg-on-surface px-6 py-24 md:px-16"
+      >
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 md:grid-cols-2">
           <div>
             <Eyebrow dark>About</Eyebrow>
@@ -261,7 +284,7 @@ export default function Home() {
       {/* Footer */}
       <footer
         id="contact"
-        className="mx-auto max-w-6xl border-t border-border px-6 py-16 md:px-16"
+        className="mx-auto max-w-6xl scroll-mt-8 border-t border-border px-6 py-16 md:px-16"
       >
         <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
           <div>
