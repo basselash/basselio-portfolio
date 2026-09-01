@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Wix_Madefor_Display, Wix_Madefor_Text, Fraunces } from "next/font/google";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import "./globals.css";
 
 const wixMadeforDisplay = Wix_Madefor_Display({
@@ -55,6 +56,7 @@ history.replaceState(null,'',location.pathname+location.search);}
 }catch(e){}})();`,
           }}
         />
+        <SmoothScroll />
         {children}
       </body>
     </html>

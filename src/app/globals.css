@@ -33,8 +33,10 @@
   --radius-lg: 24px;
 }
 
-/* Nav links glide to their section instead of jumping. Guarded so it
-   respects a reader's reduced-motion preference. */
+/* Fallback only: SmoothScroll.tsx intercepts in-page anchor clicks and
+   animates them itself, because CSS exposes no control over the duration.
+   This keeps anchors gliding rather than jumping if that script hasn't
+   run yet. Guarded so it respects a reader's reduced-motion preference. */
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
