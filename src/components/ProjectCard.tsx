@@ -81,7 +81,7 @@ export function ProjectCard({ project }: { project: Project }) {
       </div>
 
       {hasVisual && (
-        <div className="order-1 flex flex-col justify-center md:order-2 md:col-span-3">
+        <div className="order-1 flex flex-col justify-center px-5 pt-5 md:order-2 md:col-span-3 md:p-7">
           {project.hero && (
             <div className="overflow-hidden">
               <div className="aspect-[16/9] w-full transition-transform duration-500 ease-out group-hover:scale-[1.02]">
@@ -118,7 +118,7 @@ export function ProjectCard({ project }: { project: Project }) {
 
           {project.video && (
             <div
-              className="relative w-full overflow-hidden"
+              className="relative w-full overflow-hidden rounded-md"
               style={{
                 aspectRatio: project.video.aspectRatio ?? "16/9",
                 marginTop: project.hero || project.gallery ? 1 : undefined,
