@@ -215,7 +215,7 @@ export default function Home() {
         className="mx-auto max-w-6xl scroll-mt-8 px-6 pb-24 md:px-16"
       >
         <Eyebrow>Selected Work</Eyebrow>
-        <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-12">
+        <div className="mt-4 grid grid-cols-1 gap-6 md:mt-6 md:grid-cols-12">
           {PROJECTS.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}
