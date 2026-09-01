@@ -70,13 +70,22 @@ function Eyebrow({ children, dark = false }: { children: string; dark?: boolean 
 export default function Home() {
   return (
     <div className="flex-1 bg-neutral">
-      <header className="mx-auto flex max-w-6xl flex-col gap-4 px-6 pt-8 sm:flex-row sm:items-center sm:justify-between md:px-16">
+      <header className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-6 pt-8 max-[374px]:gap-2 sm:gap-4 md:px-16">
+        {/* Name and role share one line once there's room; below sm they
+            stack inside the pill so the badge stays narrow enough for the
+            nav to sit beside it rather than being pushed onto its own row. */}
         <span
-          className={`${label} w-fit whitespace-nowrap rounded-full border border-border bg-surface px-4 py-2 text-on-surface`}
+          className={`${label} rounded-full border border-border bg-surface px-3 py-2 leading-[1.45] text-on-surface max-[374px]:px-2.5 max-[374px]:text-[10px] sm:px-4`}
         >
-          Bassel Azab / UI-UX Designer
+          <span className="block whitespace-nowrap sm:inline">Bassel Azab</span>
+          <span className="hidden sm:inline"> / </span>
+          <span className="block whitespace-nowrap text-secondary sm:inline sm:text-on-surface">
+            UI-UX Designer
+          </span>
         </span>
-        <nav className={`${label} flex gap-6 text-secondary`}>
+        <nav
+          className={`${label} flex shrink-0 gap-3 text-secondary max-[374px]:gap-2 max-[374px]:text-[10px] sm:gap-6`}
+        >
           {SECTION_LINKS.map((link) => (
             <a
               key={link.href}
